@@ -1,14 +1,19 @@
 package com.talktales.ServiceImpl;
 
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.talktales.DTO.UserDTO;
 import com.talktales.Entities.User;
+import com.talktales.Exception.ResourceNotFound;
 import com.talktales.Repositories.UserRepo;
 import com.talktales.Service.UserService;
 
+@Service
 public class UserServiceImpl implements UserService{
 
 	@Autowired
@@ -23,26 +28,38 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public UserDTO updateUser(UserDTO user, Integer userid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public UserDTO updateUser(UserDTO userDto, Integer userid) {
+		User user = this.userRepo.findById(userid)  .orElseThrow(() -> new ResourceNotFound("User","Id",userid));
+
+		
+		user.setName(userDto.getName());
+		user.setEmail(userDto.getEmail());
+		user.setPassword(userDto.getPassword());
+		user.setAbout(userDto.getAbout());
+		
+		User updateUser= this.userRepo.save(user);
+		UserDTO userToDto1=this.userToDto(updateUser);
+		
+		return userToDto1 ;
+		}
 
 	@Override
 	public UserDTO getUserById(Integer userid) {
-		// TODO Auto-generated method stub
-		return null;
+		User user=this.userRepo.findById(userid).orElseThrow(() -> new ResourceNotFound("User","Id",userid));
+		return this.userToDto(user);
 	}
 
 	@Override
 	public List<UserDTO> getAllUser() {
-		// TODO Auto-generated method stub
-		return null;
+List<User>users=this.userRepo.findAll();
+List<UserDTO> userDtoList = users.stream().map(user -> userToDto(user)).collect(Collectors.toList());
+		return userDtoList ;
 	}
 
 	@Override
 	public void deleteUser(Integer userid) {
-		// TODO Auto-generated method stub
+	User user=this.userRepo.findById(userid).orElseThrow(()-> new ResourceNotFound("User  ", "Id", userid));
+	this.userRepo.delete(user);
 		
 	}
 	private User dtoToUser(UserDTO userDTO) {
