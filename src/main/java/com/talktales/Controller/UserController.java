@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.talktales.DTO.UserDTO;
 import com.talktales.Service.UserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -26,13 +28,13 @@ public class UserController {
 	private UserService userService;
 	
 	@PostMapping
-	public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDto){
+	public ResponseEntity<UserDTO> createUser(@Valid @RequestBody UserDTO userDto){
 	 UserDTO createUserDto=this.userService.createUser(userDto);
 	 return new ResponseEntity<>(createUserDto,HttpStatus.CREATED);
 	}
 
 	@PutMapping("/{userid}")
-	public ResponseEntity<UserDTO> updateUser(@RequestBody UserDTO userDto, @PathVariable("userid") int uid){
+	public ResponseEntity<UserDTO> updateUser(@ Valid @RequestBody UserDTO userDto, @PathVariable("userid") int uid){
 		UserDTO updatedUser=this.userService.updateUser(userDto, uid);
 		return ResponseEntity.ok(updatedUser);
 	}
@@ -44,7 +46,7 @@ public class UserController {
     }
 
 	@GetMapping("/{userid}")
-	public ResponseEntity<UserDTO> getSingleUser(@PathVariable int userid ){
+	public ResponseEntity<UserDTO> getSingleUser(@Valid @PathVariable int userid ){
 		return ResponseEntity.ok(this.userService.getUserById(userid));
 	}
 	
