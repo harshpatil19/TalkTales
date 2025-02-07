@@ -13,15 +13,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.talktales.Config.AppConstants;
 import com.talktales.DTO.ApiResponse;
 import com.talktales.DTO.PostDTO;
+import com.talktales.DTO.PostResponse;
 import com.talktales.Service.PostService;
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/") 
 public class PostController {
 	@Autowired
 	private PostService postService;
@@ -45,28 +48,37 @@ public class PostController {
 	}
 	
 	@GetMapping("/post")
-	public ResponseEntity<List<PostDTO>>getAllPost(){
-		List<PostDTO>allPost=this.postService.getAllPost();
-		return new ResponseEntity<List<PostDTO>>(allPost,HttpStatus.OK);
+	public ResponseEntity<PostResponse>getAllPost(@RequestParam (value="PageNumber", defaultValue=AppConstants.PAGE_NUMBER,required=false) int PageNumber,
+			@RequestParam(value="PageSize", defaultValue=AppConstants.PAGE_SIZE,required=false)int PageSize,
+			@RequestParam(value="sortby", defaultValue=AppConstants.SORT_BY,required=false)String sortBy)
+			{
+	PostResponse postResponse = this.postService.getAllPost(PageNumber,PageSize,sortBy);
+		return new ResponseEntity<PostResponse>(postResponse,HttpStatus.OK);
 	}
 	
-	@GetMapping("/post/{postid}")
-	public ResponseEntity<PostDTO> getPostById(@PathVariable int postid){
-		PostDTO post=this.postService.getPostById(postid);
+	@GetMapping("/post/{postId}")
+	public ResponseEntity<PostDTO> getPostById(@PathVariable int postId){
+		PostDTO post=this.postService.getPostById(postId);
 		return new ResponseEntity<PostDTO>(post, HttpStatus.OK);
 	}
 	
-	@PutMapping("/post/{postid}")
-	public ResponseEntity<PostDTO> updatePost(@RequestBody PostDTO postDto, @PathVariable int postid){
-		PostDTO updatePost=this.postService.updatePost(postDto, postid);
+	@PutMapping("/post/{postId}")
+	public ResponseEntity<PostDTO> updatePost(@RequestBody PostDTO postDto, @PathVariable int postId){
+		PostDTO updatePost=this.postService.updatePost(postDto, postId);
 		return new ResponseEntity<PostDTO>(updatePost,HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/post/{postid}")
-	public ApiResponse deletePost(@PathVariable int postid)
+	@DeleteMapping("/post/{postId}")
+	public ApiResponse deletePost(@PathVariable int postId)
 	{
-		this.postService.deletePost(postid);
+		this.postService.deletePost(postId);
 		return new ApiResponse("Post deleted Successfully",true);
+	}
+	
+	@GetMapping("/post/search/{keywords}")
+	public ResponseEntity<List<PostDTO>> searchPostByTitle(@PathVariable ("keywords") String keyword){
+		List<PostDTO> result= this.postService.searchPosts(keyword);
+		return new ResponseEntity<List<PostDTO>>(result,HttpStatus.OK);
 	}
 
 }
