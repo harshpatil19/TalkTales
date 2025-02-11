@@ -1,9 +1,15 @@
 package com.talktales.Entities;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -24,7 +30,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class User {
+public class User implements UserDetails {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -45,4 +51,16 @@ public class User {
 	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinTable(name="user_role", joinColumns = @JoinColumn(name="user",referencedColumnName = "userid"), inverseJoinColumns = @JoinColumn(name="role",referencedColumnName = "id"))
 	private Set<Role>roles= new HashSet<>();
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority>authoroties=this.roles.stream().map((role)-> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
+		return authoroties;
+	}
+
+	@Override
+	public String getUsername() {
+		
+		return this.email;
+	}
 }
