@@ -18,10 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.talktales.DTO.UserDTO;
 import com.talktales.Service.UserService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/users")
+@Tag(name = "User Controller", description = "Operations related to users")
 public class UserController {
 	
 	@Autowired
@@ -46,6 +49,7 @@ public class UserController {
     }
 
 	@GetMapping("/{userid}")
+	 @Operation(summary = "Get user by ID", description = "Provide an ID to look up a specific user")
 	public ResponseEntity<UserDTO> getSingleUser(@Valid @PathVariable int userid ){
 		return ResponseEntity.ok(this.userService.getUserById(userid));
 	}
