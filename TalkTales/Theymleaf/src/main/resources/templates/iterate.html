@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Iteration</title>
+</head>
+<body>
+<h1>List of the Names</h1>
+	<ul>
+		<li th:each="n : ${names}">
+		<span th:text="${n}"></span>
+		</li>
+	</ul>
+</body>
+</html>

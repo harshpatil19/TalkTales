@@ -1,0 +1,8 @@
+package com.talktales.Security;
+
+import lombok.Data;
+
+@Data
+public class JWTAuthResponse {
+	private String token;
+}

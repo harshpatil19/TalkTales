@@ -1,0 +1,20 @@
+package com.talktales.ServiceImpl;
+
+import com.talktales.DTO.CommentDTO;
+import com.talktales.Service.CommentService;
+
+public class CommentServiceImpl implements CommentService {
+
+	@Override
+	public CommentDTO createComment(CommentDTO commentDTO, Integer postid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteComment(int commentId) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

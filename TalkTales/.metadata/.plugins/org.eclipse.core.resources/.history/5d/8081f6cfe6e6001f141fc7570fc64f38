@@ -1,0 +1,5 @@
+package com.talktales.Entities;
+
+public class Role {
+
+}

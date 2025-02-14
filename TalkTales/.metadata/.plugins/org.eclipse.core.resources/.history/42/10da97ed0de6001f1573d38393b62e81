@@ -1,0 +1,9 @@
+package com.talktales.Service;
+
+import com.talktales.DTO.CommentDTO;
+
+public interface CommentService {
+	
+	CommentDTO createComment(CommentDTO commentDTO, Integer postid);
+	void deleteComment(int commentId);
+}

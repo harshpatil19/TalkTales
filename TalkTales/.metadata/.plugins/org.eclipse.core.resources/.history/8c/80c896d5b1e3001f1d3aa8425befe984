@@ -1,0 +1,59 @@
+package com.talktales.ServiceImpl;
+
+import java.util.List;
+
+import com.talktales.DTO.PostDTO;
+import com.talktales.Entities.Post;
+import com.talktales.Service.PostService;
+
+public class PostServiceImpl implements PostService {
+
+	@Override
+	public Post createPost(PostDTO postDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Post updatePost(PostDTO postDto, int postid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deletePost(int postid) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public List<Post> getAllPost() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Post getPostById(int postid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Post> getPostsByCategory(int categoryid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Post> getPostByUser(int userid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Post> searchPosts(String keyword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.talktales.Config;
+
+public class AppConstants {
+
+}

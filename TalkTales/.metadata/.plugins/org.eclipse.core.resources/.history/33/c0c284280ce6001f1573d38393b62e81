@@ -1,0 +1,8 @@
+package com.talktales.Repositories;
+
+import org.hibernate.annotations.Comments;
+
+
+public interface CommentsRepo extends JPARepository<Comments, Integer> {
+
+}

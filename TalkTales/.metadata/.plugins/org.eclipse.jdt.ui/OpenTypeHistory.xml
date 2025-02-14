@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=TalkTales/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.talktales.Service{PostService.java[PostService" modifiers="513" timestamp="1738849945866"/>
+    <typeInfo handle="=TalkTales/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.talktales.Service{FileService.java[FileService" modifiers="513" timestamp="1738946345911"/>
+    <typeInfo handle="=TalkTales/C:\/Users\/Patil\/.m2\/repository\/org\/springframework\/data\/spring-data-jpa\/3.4.2\/spring-data-jpa-3.4.2.jar=/maven.pomderived=/true=/=/javadoc_location=/jar:file:\/C:\/Users\/Patil\/.m2\/repository\/org\/springframework\/data\/spring-data-jpa\/3.4.2\/spring-data-jpa-3.4.2-javadoc.jar\!\/=/=/maven.groupId=/org.springframework.data=/=/maven.artifactId=/spring-data-jpa=/=/maven.version=/3.4.2=/=/maven.scope=/compile=/=/maven.pomderived=/true=/&lt;org.springframework.data.jpa.repository(JpaRepository.class[JpaRepository" modifiers="1537" timestamp="1738495186396"/>
+    <typeInfo handle="=TalkTales/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.talktales.Service{CommentService.java[CommentService" modifiers="513" timestamp="1739014349162"/>
+</typeInfoHistroy>

@@ -1,0 +1,7 @@
+package com.talktales.Repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public class CommentsRepo implements JpaRepository<T, ID> {
+
+}

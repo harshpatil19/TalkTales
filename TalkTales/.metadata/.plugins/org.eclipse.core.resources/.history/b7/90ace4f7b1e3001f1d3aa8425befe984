@@ -1,0 +1,21 @@
+package com.talktales.Service;
+
+import java.util.List;
+
+import com.talktales.DTO.PostDTO;
+import com.talktales.Entities.Post;
+
+public interface  PostService {
+Post createPost(PostDTO postDto); 
+Post updatePost(PostDTO postDto, int postid);
+void deletePost(int postid);
+List<Post>getAllPost();
+
+Post getPostById(int postid);
+//get all post by category
+List<Post>getPostsByCategory(int categoryid);
+//get all post by user
+List<Post>getPostByUser(int userid);
+
+List<Post>searchPosts(String keyword);
+}

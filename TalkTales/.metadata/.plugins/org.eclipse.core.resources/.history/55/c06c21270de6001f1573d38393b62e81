@@ -1,0 +1,9 @@
+package com.talktales.Repositories;
+
+import org.hibernate.annotations.Comments;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+public interface CommentRepo extends JpaRepository<Comments, Integer> {
+
+}

@@ -1,0 +1,5 @@
+package com.talktales.Controller;
+
+public class CommentController {
+
+}

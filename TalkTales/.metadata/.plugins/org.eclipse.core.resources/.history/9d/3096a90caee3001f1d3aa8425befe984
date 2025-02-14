@@ -1,0 +1,5 @@
+package com.talktales.Repositories;
+
+public class PostRepo {
+
+}

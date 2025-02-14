@@ -1,0 +1,71 @@
+package com.talktales.ServiceImpl;
+
+import java.util.Date;
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.talktales.DTO.PostDTO;
+import com.talktales.Entities.Post;
+import com.talktales.Repositories.PostRepo;
+import com.talktales.Service.PostService;
+@Service
+public class PostServiceImpl implements PostService {
+@Autowired
+	private PostRepo postRepo;
+@Autowired
+private ModelMapper modelMapper;
+	
+	@Override
+	public Post createPost(PostDTO postDto) {
+		Post post=this.modelMapper.map(postDto, Post.class);
+		post.setImageName("default.png");
+		post.setAddeddate(new Date());
+		return null;
+	}
+
+	@Override
+	public Post updatePost(PostDTO postDto, int postid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deletePost(int postid) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public List<Post> getAllPost() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Post getPostById(int postid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Post> getPostsByCategory(int categoryid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Post> getPostByUser(int userid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Post> searchPosts(String keyword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
