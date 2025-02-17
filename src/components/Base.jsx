@@ -1,11 +1,13 @@
 import React from "react";
 import CustomNavbar from "./CustomNavbar";
 import { Container } from "reactstrap";
+import { ToastContainer } from "react-toastify";
 
 const Base = ({ title = "Welcome to TalkTales", children }) => {
   return (
     <div>
       <CustomNavbar />
+      <ToastContainer /> 
       <Container>
         <h1>{title}</h1>
         {children}

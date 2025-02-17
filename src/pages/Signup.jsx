@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Base from "../components/Base";
+import Base from "../components/base";
+import { signUp } from "../Services/user-service";
+import { toast } from "react-toastify";
 import {
   Container,
   Card,
@@ -11,6 +13,7 @@ import {
   Button,
   Row,
   Col,
+  FormFeedback,
 } from "reactstrap"; // Import missing components
 
 const Signup = () => {
@@ -47,7 +50,27 @@ const resetData=()=>{
 
 const submitForm=(event)=>{
     event.preventDefault();
+
+    if(error.isError){
+      toast.error("Form data is invalid");
+      setError({...error,isError:false})
+      return;
+    }
+    
     console.log(data);
+    signUp(data).then((resp)=>{
+      console.log(resp);
+      console.log("success log");
+      toast.success("User Registered Successfully");
+
+    }).catch((error)=>{
+      console.log(error);
+      console.log("error log");
+      setError({
+       errors:error,
+       isError:true 
+      })
+    });
 }
 
 
@@ -67,7 +90,11 @@ const submitForm=(event)=>{
                   <Label for="name">Enter Name</Label>
                   <Input type="text" id="name" placeholder="Enter here" 
                   onChange={(e)=>handleChange(e,'name')}
-                  value={data.name}/>
+                  value={data.name}
+                  invalid={ error.errors?.response?.data?.name ? true:false }/>
+                  <FormFeedback>
+                    {error.errors?.response?.data?.name}
+                  </FormFeedback>
                 </FormGroup>
 
                 {/* Email Field */}
@@ -75,7 +102,11 @@ const submitForm=(event)=>{
                   <Label for="email">Enter Email</Label>
                   <Input type="email" id="email" placeholder="Enter email"
                   onChange={(e)=>handleChange(e,'email')} 
-                  value={data.email}/>
+                  value={data.email}
+                  invalid={ error.errors?.response?.data?.email ? true:false }/>
+                  <FormFeedback>
+                    {error.errors?.response?.data?.email}
+                  </FormFeedback>
                   
                 </FormGroup>
 
@@ -87,7 +118,11 @@ const submitForm=(event)=>{
                     id="password"
                     placeholder="Enter password"
                     onChange={(e)=>handleChange(e,'password')}
-                    value={data.password} />
+                    value={data.password} 
+                    invalid={ error.errors?.response?.data?.password ? true:false }/>
+                  <FormFeedback>
+                    {error.errors?.response?.data?.password}
+                  </FormFeedback>
                 </FormGroup>
 
                 {/* Text Area */}
@@ -96,7 +131,11 @@ const submitForm=(event)=>{
                   <Input id="about" name="text" type="textarea" 
                   placeholder="Enter text"
                   onChange={(e)=>handleChange(e,'about')}
-                  value={data.about}/>
+                  value={data.about}
+                  invalid={ error.errors?.response?.data?.about ? true:false }/>
+                  <FormFeedback>
+                    {error.errors?.response?.data?.about}
+                  </FormFeedback>
                 </FormGroup>
 
                 {/* Buttons */}

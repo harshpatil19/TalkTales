@@ -14,6 +14,19 @@ import {
 } from "reactstrap";
 
 const Login = () => {
+
+  const [LoginDetail,setLoginDetail]=useState({
+    username:'',
+    password:''
+
+  })
+
+  const handleChange=(event,field)=>{
+let actualValue=event.target.value
+setLoginDetail({ ...LoginDetail,[field]:actualValue
+
+})
+  }
   return (
     <Base>
       <Container>
@@ -31,6 +44,8 @@ const Login = () => {
                   name="email"
                   placeholder="Email"
                   type="email"
+                  value={LoginDetail.username}
+                  onChange={(e)=> handleChange(e,'username')}
                 />
               </FormGroup>{" "}
               <FormGroup>
@@ -42,6 +57,8 @@ const Login = () => {
                   name="password"
                   placeholder="Password"
                   type="password"
+                  value={LoginDetail.password}
+                  onChange={(e)=> handleChange(e,'password')}
                 />
               </FormGroup>{" "}
               <Container className="text-center">
