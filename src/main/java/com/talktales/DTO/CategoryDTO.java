@@ -19,7 +19,7 @@ public class CategoryDTO {
 	private int categoryId;
 @NotNull
 @Size(min= 50,message="TItle cannot be greater than 50 Caracters")
-	private String categoryTitile;
+	private String categoryTitle;
 @NotNull
 	private String categoryDescription;
 	

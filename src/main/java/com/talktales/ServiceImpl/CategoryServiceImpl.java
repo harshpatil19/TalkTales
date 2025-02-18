@@ -35,7 +35,7 @@ public class CategoryServiceImpl implements CategoryService {
 	public CategoryDTO updateCategory(CategoryDTO categoryDTO, Integer categoryid) {
 		Category category = this.categoryRepo.findById(categoryid)
 				.orElseThrow(() -> new ResourceNotFound("Category", "ID", categoryid));
-		category.setCategoryTitile(categoryDTO.getCategoryTitile());
+		category.setCategoryTitle(categoryDTO.getCategoryTitle());
 		category.setCategoryDescription(categoryDTO.getCategoryDescription());
 		Category updateCategory = this.categoryRepo.save(category);
 		CategoryDTO catDTO = this.categoryToDto(updateCategory);

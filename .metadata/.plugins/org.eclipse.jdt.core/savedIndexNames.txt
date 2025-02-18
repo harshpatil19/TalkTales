@@ -1,0 +1,1 @@
+INDEX VERSION 1.134+C:\Users\Patil\OneDrive\Desktop\TalkTales Backend\.metadata\.plugins\org.eclipse.jdt.core
