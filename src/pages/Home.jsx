@@ -1,14 +1,12 @@
-import React from "react";
-import Base from "../components/Base"
+import React, { useEffect } from "react";
+import Base from "../components/Base";
+import NewFeed from "../components/NewFeed";
 
-const Home=()=>{
-    return(
-     <Base>
-    <div>
-    <h1>this is home page</h1>
-    <p>Welcome to Home</p>
-    </div>
+const Home = () => {
+  return (
+    <Base>
+      <NewFeed />
     </Base>
-    );
+  );
 };
-export default Home
+export default Home;

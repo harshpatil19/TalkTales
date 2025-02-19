@@ -3,7 +3,7 @@ import CustomNavbar from "./CustomNavbar";
 import { Container } from "reactstrap";
 import { ToastContainer } from "react-toastify";
 
-const Base = ({ title = "Welcome to TalkTales", children }) => {
+const Base = ({ title = " ", children }) => {
   return (
     <div>
       <CustomNavbar />
