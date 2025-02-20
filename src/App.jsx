@@ -10,9 +10,11 @@ import UserDashboard from "./pages/user-routes/UserDashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import ProfileInfo from "./pages/user-routes/ProfileInfo";
 import PostPage from "./pages/PostPage";
+import UserProvider from "./Context/userProvider";
+
 function App() {
   return (
-    <>
+    <UserProvider>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} /> {/* Default route */}
@@ -32,7 +34,7 @@ function App() {
       </Routes>
     </BrowserRouter>
      <ToastContainer position="top-center" autoClose={3000} /> 
-     </>
+     </UserProvider>
   );
 }
 
